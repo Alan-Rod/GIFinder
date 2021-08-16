@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ExT-zs-S26">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--GIFinder-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GIFinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Find your GIF" translatesAutoresizingMaskIntoConstraints="NO" id="I5h-qn-iSc">
+                                <rect key="frame" x="0.0" y="88" width="414" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eFs-05-Uy5">
+                                <rect key="frame" x="0.0" y="139" width="414" height="723"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GifCell" rowHeight="200" id="984-5I-ucA" customClass="GifCell" customModule="GIFinder" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="984-5I-ucA" id="HmD-kC-vRE">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1rw-YO-tnO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1rw-YO-tnO" firstAttribute="top" secondItem="HmD-kC-vRE" secondAttribute="top" id="0P2-o1-Vk7"/>
+                                                <constraint firstAttribute="trailing" secondItem="1rw-YO-tnO" secondAttribute="trailing" id="9p6-Nc-DEI"/>
+                                                <constraint firstItem="1rw-YO-tnO" firstAttribute="leading" secondItem="HmD-kC-vRE" secondAttribute="leading" id="BoM-4N-BpG"/>
+                                                <constraint firstAttribute="bottom" secondItem="1rw-YO-tnO" secondAttribute="bottom" id="IgF-An-ixs"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="gifView" destination="1rw-YO-tnO" id="Uoq-Rv-Eh8"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="I5h-qn-iSc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="8Gu-TB-CoL"/>
+                            <constraint firstItem="eFs-05-Uy5" firstAttribute="top" secondItem="I5h-qn-iSc" secondAttribute="bottom" id="IuD-zz-6tJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eFs-05-Uy5" secondAttribute="bottom" id="Rwe-cM-BeM"/>
+                            <constraint firstItem="I5h-qn-iSc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fKY-cl-ejP"/>
+                            <constraint firstItem="eFs-05-Uy5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="j5P-lG-Zpr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eFs-05-Uy5" secondAttribute="trailing" id="kiF-GB-PvB"/>
+                            <constraint firstItem="I5h-qn-iSc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mhT-Mr-Kr5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="GIFinder" id="XeQ-vG-HNj"/>
+                    <connections>
+                        <outlet property="gifTableView" destination="eFs-05-Uy5" id="hzW-qc-vtc"/>
+                        <outlet property="searchBar" destination="I5h-qn-iSc" id="YYh-C2-A2a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="109.82142857142857"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2ec-I0-lFl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ExT-zs-S26" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Fd-lw-syO">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="GgE-WI-R8T"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ll7-uL-Hub" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
