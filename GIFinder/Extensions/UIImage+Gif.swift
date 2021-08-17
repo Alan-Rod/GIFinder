@@ -121,9 +121,7 @@ extension UIImage {
         var images = [CGImage]()
         var delays = [Int]()
 
-//        let semaphore = DispatchSemaphore.init(value: 1)
         for i in 0..<count {
-//            semaphore.wait()
             if let image = CGImageSourceCreateImageAtIndex(source, i, nil) {
                 images.append(image)
             }
@@ -131,7 +129,6 @@ extension UIImage {
             let delaySeconds = UIImage.delayForImageAtIndex(Int(i),
                                                             source: source)
             delays.append(Int(delaySeconds * 1000.0))
-//            semaphore.resume()
         }
 
         let duration: Int = {

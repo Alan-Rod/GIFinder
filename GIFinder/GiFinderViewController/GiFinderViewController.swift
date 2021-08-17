@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GiFinderViewController.swift
 //  GIFinder
 //
 //  Created by Alan Rodriguez on 13/08/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GiFinderViewController: UIViewController {
     @IBOutlet weak var gifTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
 
@@ -32,13 +32,16 @@ class ViewController: UIViewController {
 
     private func searchGifs(for gif: String) {
         network.fetchGifs(for: gif) { GifArray in
+            self.gifs = []
             self.gifs = GifArray.gifs
-            self.gifTableView.reloadData()
+            DispatchQueue.main.async { [weak self] in
+                self?.gifTableView.reloadData()
+            }
         }
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension GiFinderViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let height = CGFloat(gifs[indexPath.row].getGifHeight())
         return height
@@ -56,10 +59,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ViewController: UISearchBarDelegate {
+extension GiFinderViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(reload), object: nil)
-        perform(#selector(reload), with: nil, afterDelay: 0.5)
+        perform(#selector(reload), with: nil, afterDelay: 2)
     }
 
     @objc

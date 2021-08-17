@@ -7,28 +7,7 @@
 
 import Foundation
 
-struct GifArray: Decodable {
-    var gifs: [Gif]
-
-    enum CodingKeys: String, CodingKey {
-        case gifs = "data"
-    }
-}
-
-struct original: Decodable {
-    var url: String
-    var height: String
-}
-
-struct GifImages: Decodable {
-    var original: original
-
-    enum CodingKeys: String, CodingKey {
-        case original = "original"
-    }
-}
-
-struct Gif: Decodable {
+class Gif: Decodable {
     var gifSources: GifImages
 
     enum CodingKeys: String, CodingKey {

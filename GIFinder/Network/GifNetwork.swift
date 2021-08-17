@@ -5,14 +5,14 @@
 //  Created by Alan Rodriguez on 16/08/21.
 //
 
-import Foundation
+import UIKit
 
 class GifNetwork {
     func fetchGifs(for gifName: String, completion: @escaping (_ response: GifArray) -> Void) {
         let url = urlBuilder(gifName: gifName)
         var request = URLRequest(url: url)
-
         request.httpMethod = "GET"
+
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let err = error {
                 print("Error fetching GIFs: \(err.localizedDescription)")
@@ -36,7 +36,7 @@ class GifNetwork {
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
             URLQueryItem(name: "q", value: gifName),
-            URLQueryItem(name: "limit", value: "5")
+            URLQueryItem(name: "limit", value: "3")
         ]
 
         return components.url!
